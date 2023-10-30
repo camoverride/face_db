@@ -9,7 +9,7 @@ Download [the dataset](https://www.kaggle.com/datasets/arnaud58/flickrfaceshq-da
 
 Install all `requirements.txt`.
 
-Run the database generating script like this: `python create_embedding_db.py path/to/face/images`.
+Run the database-generating script like this: `python create_embedding_db.py path/to/face/images`.
 
 NOTE: It takes about 2 hours to generate the database on a 2023 MacBook Pro.
 
@@ -41,4 +41,11 @@ If you're in the process of generating the database and want to check on the pro
 > SELECT id FROM faces ORDER BY id DESC LIMIT 1;
 ```
 
-Enjoy!
+There are `88` faces that failed to embed for one reason or another:
+
+```
+> SELECT COUNT(*) FROM faces WHERE embedding = "None";
+88
+```
+
+Enjoy 😉
