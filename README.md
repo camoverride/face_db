@@ -33,4 +33,10 @@ And you can inspect it like this:
 > .exit
 ```
 
+If you're in the process of generating the database and want to check on the progress, use this query:
+
+```
+> SELECT id FROM faces ORDER BY id DESC LIMIT 1;
+```
+
 Enjoy!
