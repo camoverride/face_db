@@ -52,6 +52,8 @@ for file in sorted(os.listdir(FACE_PIC_BASE_PATH)):
         embedding = create_face_embedding(file_path)
     except IndexError:
         embedding = None
+        print(f"ERROR EMBEDDING {file_path}")
+
     
     # Ignore file if already uploaded.
     sql = """
