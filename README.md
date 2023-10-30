@@ -11,6 +11,8 @@ Install all `requirements.txt`.
 
 Run the database generating script like this: `python create_embedding_db.py path/to/face/images`.
 
+NOTE: It takes about 2 hours to generate the database on a 2023 MacBook Pro.
+
 
 ## Properties
 
