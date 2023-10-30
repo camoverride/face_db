@@ -14,6 +14,8 @@ Run the database generating script like this: `python create_embedding_db.py pat
 
 ## Properties
 
+If a face is unable to be embedded, it will not appear as an entry in the database.
+
 The resulting sqlite database will be named `face_embeddings.db`.
 
 It will look like this:

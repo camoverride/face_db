@@ -36,29 +36,27 @@ def create_face_embedding(image: str) -> list:
 con = sqlite3.connect("face_embeddings.db")
 cur = con.cursor()
 
-# Create faces table if it doesn't already exist
+# Create faces table if it doesn't already exist.
 try:
     cur.execute("CREATE TABLE faces (id VARCHAR(255), embedding VARCHAR(255), UNIQUE(id))")
 except sqlite3.OperationalError:
     pass
 
-
-# Insert every file into the database
+# Try to embed every face into the database.
 for file in sorted(os.listdir(FACE_PIC_BASE_PATH)):
     file_path = os.path.join(FACE_PIC_BASE_PATH, file)
 
-    # Sometimes an embedding can't be created.
     try:
         embedding = create_face_embedding(file_path)
-    except IndexError:
-        embedding = None
-        print(f"ERROR EMBEDDING {file_path}")
 
-    
-    # Ignore file if already uploaded.
-    sql = """
-        INSERT OR IGNORE INTO faces(id, embedding)
-        VALUES(?, ?)
-        """
-    cur.execute(sql, (file, str(embedding))) # convert the embedding vector to a string.
-    con.commit()
+        # Ignore file if already uploaded.
+        sql = """
+            INSERT OR IGNORE INTO faces(id, embedding)
+            VALUES(?, ?)
+            """
+        cur.execute(sql, (file, str(embedding))) # convert the embedding vector to a string.
+        con.commit()
+
+    except: # IndexError:
+        embedding = None
+        print(f"ERROR CREATING EMBEDDING {file_path}")
