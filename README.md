@@ -16,7 +16,7 @@ NOTE: It takes about 2 hours to generate the database on a 2023 MacBook Pro.
 
 ## Properties
 
-If a face is unable to be embedded, it will not appear as an entry in the database.
+If a face is unable to be embedded, it will have the value `None` in the database.
 
 The resulting sqlite database will be named `face_embeddings.db`.
 
