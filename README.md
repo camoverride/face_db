@@ -35,17 +35,19 @@ And you can inspect it like this:
 > .exit
 ```
 
+There are `52,001` entries, and only `88` of them fail to embed for one reason or another:
+
+```
+> SELECT COUNT(*) from faces;
+52001
+> SELECT COUNT(*) FROM faces WHERE embedding = "None";
+88
+```
+
 If you're in the process of generating the database and want to check on the progress, use this query:
 
 ```
 > SELECT id FROM faces ORDER BY id DESC LIMIT 1;
-```
-
-There are `88` faces that failed to embed for one reason or another:
-
-```
-> SELECT COUNT(*) FROM faces WHERE embedding = "None";
-88
 ```
 
 Enjoy 😉
