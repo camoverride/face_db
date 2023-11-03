@@ -9,7 +9,7 @@ Download [the dataset](https://www.kaggle.com/datasets/arnaud58/flickrfaceshq-da
 
 Install all `requirements.txt`.
 
-Run the database-generating script like this: `python create_embedding_db.py path/to/face/images`.
+Run the database-generating script like this: `python create_embedding_db.py path/to/face/images large`.
 
 NOTE: It takes about 2 hours to generate the database on a 2023 MacBook Pro.
 

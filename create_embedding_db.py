@@ -7,6 +7,7 @@ import face_recognition
 
 # Path to all the face pics.
 FACE_PIC_BASE_PATH = sys.argv[1]
+MODEL = sys.arvg[2] # cnn, large, small
 
 
 def create_face_embedding(image: str) -> list:
@@ -25,8 +26,11 @@ def create_face_embedding(image: str) -> list:
     """
     image_file = face_recognition.load_image_file(image)
     try:
-        embedding = face_recognition.face_encodings(image_file)[0]
+        embedding = face_recognition.face_encodings(image_file,
+                                                    model="MODEL")[0]
+        
     except IndexError:
+        print(f"Failed to embed {image}")
         return None
 
     return embedding
